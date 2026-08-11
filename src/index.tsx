@@ -1,8 +1,8 @@
-import { configure, globalVariables, type Manifest, manifest, type OrchestratorConfig, remoteUrl } from "@mfe-orchestrator-hub/client"
+import { configure, globalVariables, type Manifest, manifest, type OrchestratorConfig, remoteUrl } from "@mfe-orchestrator/client"
 import type { ReactNode } from "react"
 import { type AsyncState, useAsync } from "./useAsync"
 
-export type { GlobalVariable, Identities, Manifest, Microfrontend, OrchestratorConfig } from "@mfe-orchestrator-hub/client"
+export type { GlobalVariable, Identities, Manifest, Microfrontend, OrchestratorConfig } from "@mfe-orchestrator/client"
 export type { AsyncState } from "./useAsync"
 
 export interface OrchestratorProviderProps {
@@ -11,7 +11,7 @@ export interface OrchestratorProviderProps {
 }
 
 /**
- * Hands the configuration to `@mfe-orchestrator-hub/client` and renders its children.
+ * Hands the configuration to `@mfe-orchestrator/client` and renders its children.
  *
  * `configure()` runs in the render pass, before any child renders, and is idempotent, so re renders
  * and StrictMode double invocations are harmless. It stays a convenience: the recommended place is
