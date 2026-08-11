@@ -22,8 +22,7 @@ const App = () => (
     <OrchestratorProvider
         config={{
             backendUrl: import.meta.env.VITE_MFE_BACKEND_URL,
-            projectId: import.meta.env.VITE_MFE_PROJECT_ID,
-            environment: import.meta.env.VITE_MFE_ENVIRONMENT
+            projectId: import.meta.env.VITE_MFE_PROJECT_ID
         }}
     >
         <Checkout />
@@ -40,10 +39,35 @@ bundler may import a remote before React ever mounts:
 ```ts
 import { configure } from "@mfe-orchestrator-hub/client"
 
-configure({ backendUrl: "…", projectId: "…", environment: "…" })
+configure({ backendUrl: "…", projectId: "…" })
 ```
 
 Both are fine together: the provider's second call is the no op.
+
+### `environment` is optional
+
+Leave `environment` out and the console resolves it server side, matching the domain the host page
+is served on against the domains configured on the project's environments. One build then runs
+unchanged in staging and in production, with no environment variable to thread through the host. If
+no environment of the project claims that domain, the manifest request fails and every hook reports
+the error.
+
+Pass it explicitly when the domain alone cannot tell the environments apart — several environments
+behind one host, a local dev server, a preview deployment:
+
+```tsx
+<OrchestratorProvider
+    config={{
+        backendUrl: import.meta.env.VITE_MFE_BACKEND_URL,
+        projectId: import.meta.env.VITE_MFE_PROJECT_ID,
+        environment: import.meta.env.VITE_MFE_ENVIRONMENT
+    }}
+>
+```
+
+Nothing changes for a host that already passes it. As with everything else here, the choice belongs
+to the core: this package only hands `config` over, so omitting the field requires a
+`@mfe-orchestrator-hub/client` that supports it.
 
 ### `useRemoteUrl(slug)`
 
