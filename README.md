@@ -1,6 +1,6 @@
-# @mfe-orchestrator/client-react
+# @mfe-orchestrator-hub/client-react
 
-React bindings for [`@mfe-orchestrator/client`](https://github.com/mfe-orchestrator/client-core).
+React bindings for [`@mfe-orchestrator-hub/client`](https://github.com/mfe-orchestrator/client-core).
 
 Ergonomics only. Every decision — which version is served, how the manifest is fetched, how the
 identities are kept — lives in the core. This package is a provider and three hooks.
@@ -8,15 +8,15 @@ identities are kept — lives in the core. This package is a provider and three 
 ## Install
 
 ```sh
-pnpm add @mfe-orchestrator/client-react
+pnpm add @mfe-orchestrator-hub/client-react
 ```
 
-`@mfe-orchestrator/client` comes along as a dependency. `react` is a peer dependency (18 or 19).
+`@mfe-orchestrator-hub/client` comes along as a dependency. `react` is a peer dependency (18 or 19).
 
 ## Usage
 
 ```tsx
-import { OrchestratorProvider, useRemoteUrl, useGlobalVariables, useManifest } from "@mfe-orchestrator/client-react"
+import { OrchestratorProvider, useRemoteUrl, useGlobalVariables, useManifest } from "@mfe-orchestrator-hub/client-react"
 
 const App = () => (
     <OrchestratorProvider
@@ -38,7 +38,7 @@ It stays a convenience. The recommended place is still the very top of the entry
 bundler may import a remote before React ever mounts:
 
 ```ts
-import { configure } from "@mfe-orchestrator/client"
+import { configure } from "@mfe-orchestrator-hub/client"
 
 configure({ backendUrl: "…", projectId: "…", environment: "…" })
 ```
