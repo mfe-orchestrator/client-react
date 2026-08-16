@@ -111,6 +111,33 @@ interface AsyncState<TValue> {
 All of them read the one memoized manifest of the core, so N hooks across N components still cost a
 single network request.
 
+### `setUserId(userId)`
+
+The logged-in user is what a *User* canary is decided on, and it is the one thing that changes while
+the page is alive. A second `configure()` is ignored on purpose, so it has its own call:
+
+```tsx
+import { setUserId } from "@mfe-orchestrator-hub/client-react"
+
+auth.onLogin(user => setUserId(user.id))
+auth.onLogout(() => setUserId(undefined)) // back to the stable version
+```
+
+`<OrchestratorProvider>` does it for you when the user lives in your React state: pass it in the
+config and every change reaches the core.
+
+```tsx
+<OrchestratorProvider config={{ backendUrl, projectId, userId: session?.user.id }}>
+```
+
+Either way the memoized manifest is dropped, so the next `useRemoteUrl()` is answered for the new
+user. Remotes **already imported** keep the version drawn for the previous one — the federation
+runtime holds the container it loaded — so resolve them behind your own auth guard, or reload the page
+after the switch.
+
+Needs a `@mfe-orchestrator-hub/client` that exposes `setUserId()`. On an older core the call warns and
+does nothing rather than crashing.
+
 ### With module federation
 
 The hooks are for the app's own logic. The remote itself is wired in the bundler config, which talks
