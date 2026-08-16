@@ -1,5 +1,10 @@
 # @mfe-orchestrator-hub/client-react
 
+**Part of [MFE Orchestrator](https://mfe-orchestrator.dev)** — the control plane for your
+microfrontends. The site is the short version; the
+[documentation](https://mfe-orchestrator.dev/documentation/docs/integration/client-sdk) is where this
+package sits in context: environments, deployments, canary releases.
+
 React bindings for [`@mfe-orchestrator-hub/client`](https://github.com/mfe-orchestrator/client-core).
 
 Ergonomics only. Every decision — which version is served, how the manifest is fetched, how the
