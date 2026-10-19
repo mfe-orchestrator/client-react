@@ -3,7 +3,7 @@ import { configure, globalVariables, type Manifest, manifest, type OrchestratorC
 import { type ReactNode, useRef } from "react"
 import { type AsyncState, useAsync } from "./useAsync"
 
-export type { GlobalVariable, Identities, Manifest, Microfrontend, OrchestratorConfig } from "@mfe-orchestrator-hub/client"
+export type { Frontend, GlobalVariable, Identities, Manifest, OrchestratorConfig } from "@mfe-orchestrator-hub/client"
 export type { AsyncState } from "./useAsync"
 
 /**

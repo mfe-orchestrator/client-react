@@ -1,7 +1,7 @@
 # @mfe-orchestrator-hub/client-react
 
 **Part of [MFE Orchestrator](https://mfe-orchestrator.dev)** — the control plane for your
-microfrontends. The site is the short version; the
+frontends. The site is the short version; the
 [documentation](https://mfe-orchestrator.dev/documentation/docs/integration/client-sdk) is where this
 package sits in context: environments, deployments, canary releases.
 
@@ -100,7 +100,7 @@ const { data: variables } = useGlobalVariables()
 
 ```tsx
 const { data: manifest } = useManifest()
-// { globalVariables: [...], microfrontends: [...] }
+// { globalVariables: [...], frontends: [...] }
 ```
 
 Every hook returns the same shape:
